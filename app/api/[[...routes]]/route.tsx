@@ -51,7 +51,7 @@ app.frame("/moxie-stat", async (c) => {
   }) as State;
 
   return c.res({
-    image: await getMoxieImage(state.targetFid == -1 ? fid : state.targetFid),
+    image: await getMoxieImage(c.inputText == "" ? fid : state.targetFid),
     intents: [
       <TextInput placeholder="Enter Fid" />,
       <Button action="/moxie-stat">Search</Button>
