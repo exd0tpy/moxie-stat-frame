@@ -11,6 +11,10 @@ import {
 
 import { getMoxieImage } from "../../ui/moxie";
 
+interface State {
+  targetFid: number;
+}
+
 
 const app = new Frog({
   assetsPath: "/",
@@ -42,9 +46,9 @@ app.frame("/moxie-stat", async (c) => {
   const fid = c.frameData?.fid;
   await postLum0xTestFrameValidation(Number(fid), "moxie-stat");
 
-  const state = c.deriveState((previousState: any) => {
+  const state : State = c.deriveState((previousState: any) => {
     previousState.targetFid = Number(c.inputText);
-  });
+  }) as State;
 
   return c.res({
     image: await getMoxieImage(state.targetFid == -1 ? fid : state.targetFid),
