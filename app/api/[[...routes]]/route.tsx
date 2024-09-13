@@ -16,7 +16,7 @@ const app = new Frog({
   assetsPath: "/",
   basePath: "/api",
   hub: neynar({ apiKey: process.env.NEYNAR_API_KEY ?? "" }),
-  title: "Raffle among your fans",
+  title: "Moxie Stat",
   imageAspectRatio: "1:1",
   imageOptions: {
     height: 800,
@@ -28,6 +28,7 @@ const app = new Frog({
 });
 
 app.frame("/", async (c) => {
+  
   return c.res({
     image: "/Default.png",
     intents: [
